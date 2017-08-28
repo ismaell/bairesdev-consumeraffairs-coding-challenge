@@ -1,0 +1,57 @@
+Deployment for testing
+======================
+Using a virtualenv is recommended. See:
+<https://docs.python.org/3.6/library/venv.html>
+
+Dependencies are specified in requirements.txt; to install use:
+
+	pip install -r requirements.txt
+
+WARNING: The application is with debugging features enabled, and sqlite
+database, so should not be deployed in production without prior configuration.
+
+Migrations must be applied first:
+
+	python3 manage.py migrate
+
+Then you can test the project by running:
+
+	python3 manage.py runserver
+
+It will run on <http://localhost:8000/> by default.
+
+
+
+Setting up users
+================
+A superuser must be created first; e.g:
+
+	python3 manage.py createsuperuser \
+		--username admin --email admin@localhost
+
+With this user created you can then add more users from the admin interface
+at <http://localhost:8000/admin/>.
+
+
+
+Tests
+=====
+A few tests are included, you can run these with:
+
+	python3 manage.py test
+
+
+
+The Interface
+=============
+The entry point is at <http://localhost:8000/review/>. The application
+requires users to be logged in for all purposes.
+
+There it will show the list of reviews by the current user, and a form to
+enter new ones.
+
+The admin interface at <http://localhost:8000/admin/> provides staff members
+with access to all reviews.
+
+
+Enjoy.
